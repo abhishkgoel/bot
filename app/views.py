@@ -7,7 +7,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
 from .forms import *
 
-import tkinter as tk
+# import tkinter as tk
 # import tkinter as Tk
 import tkinter.filedialog as fd
 import getpass
@@ -57,7 +57,6 @@ def register(request):
         else:
             messages.info(request, 'Both passwords are not matching')
             return redirect(register)
-            
 
     else:
         return render(request, 'app/registeration.html')
@@ -133,20 +132,20 @@ def upload_pdf(request):
         form = DocumentForm2(request.POST,request.POST)
         otp = request.POST['otp']
         file = request.FILES['file']
-        # files = request.FILES.getlist('files')
+        files = request.FILES.getlist('files')
         if form.is_valid():
-            # for f in files:
-            file_instance = Document2()
-            file_instance.types = request.POST['types']
-            file_instance.category = request.POST['category']
-            file_instance.identity = random_id
-            file_instance.document_excel = file.read()
-            # filename = f.name
-            # file_instance.file_name = filename.split('.')[0]
-            # file_instance.document_pdf = f.read()
-            file_instance.save()
-            # files_id.append(file_instance.id)
-            idd = file_instance.id
+            for f in files:
+                file_instance = Document2()
+                file_instance.types = request.POST['types']
+                file_instance.category = request.POST['category']
+                file_instance.identity = random_id
+                file_instance.document_excel = file.read()
+                filename = f.name
+                file_instance.file_name = filename.split('.')[0]
+                file_instance.document_pdf = f.read()
+                file_instance.save()
+                files_id.append(file_instance.id)
+            idd = files_id[0]
             document2call = Document2.objects.get(id = idd)
             excelfile = document2call.document_excel
             login_select = document2call.types
@@ -162,23 +161,23 @@ def upload_pdf(request):
 
 def main(request):
     print('testtttttttttttttttt')
-    root = tk.Tk()
-    file2 = fd.askopenfilenames(parent=root, title='Choose a pdf files')
-    root.destroy()
-    df1 = pd.DataFrame(list(file2), columns =['file_path'])
-    df1['file_name']=0
-    time.sleep(10)
-    for i in range(len(df1)):
-        file2 = df1['file_path'][i].split("/")
-        file_name = file2[-1].split(".")[0]
-        df1['file_name'][i]=file_name
+    # root = tk.Tk()
+    # file2 = fd.askopenfilenames(parent=root, title='Choose a pdf files')
+    # root.destroy()
+    # df1 = pd.DataFrame(list(file2), columns =['file_path'])
+    # df1['file_name']=0
+    # time.sleep(10)
+    # for i in range(len(df1)):
+    #     file2 = df1['file_path'][i].split("/")
+    #     file_name = file2[-1].split(".")[0]
+    #     df1['file_name'][i]=file_name
     start = time.time()
     if(login_select.lower() =="producer"):
-        producer(driver,excelfile,select,df1)
+        producer(driver,excelfile,select)
     elif(login_select.lower() =="brand owner"):
-        brand_owner(driver,excelfile,df1)
+        brand_owner(driver,excelfile)
     elif(login_select.lower() =="importer"):
-        importer(driver,excelfile,select,df1)
+        importer(driver,excelfile,select)
     else:
         print("PLEASE ENTER CORRECT CHOICE")
         pass

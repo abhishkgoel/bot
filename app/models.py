@@ -26,7 +26,8 @@ class Document2(models.Model):
     identity = models.CharField(max_length=75)
     types = models.CharField(max_length=20, choices=Types, default='producer')
     category = models.CharField(max_length=20, choices=Category, default='sales')
-    # file_name = models.CharField(max_length=50)
+    file_name = models.CharField(max_length=75)
+    document_pdf = BlobField()
     document_excel = BlobField()
     created_on = models.DateTimeField(auto_now_add=True)
 

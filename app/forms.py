@@ -13,7 +13,7 @@ class DocumentForm(forms.ModelForm):
 class DocumentForm2(forms.ModelForm):
     class Meta:
         model = Document2
-        fields = ('types','category', )
+        fields = ('types','category',)
         widgets = {
         'document_excel': ClearableFileInput(attrs={'multiple': True}),
         'document_pdf': ClearableFileInput(attrs={'multiple': True}),
