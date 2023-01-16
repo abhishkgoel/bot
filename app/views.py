@@ -9,7 +9,7 @@ from .forms import *
 
 # import tkinter as tk
 # import tkinter as Tk
-import tkinter.filedialog as fd
+# import tkinter.filedialog as fd
 import getpass
 from time import sleep
 import time
