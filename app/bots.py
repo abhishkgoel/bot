@@ -1,7 +1,7 @@
 from datetime import datetime
 import time
-from tkinter import Tk
-import tkinter.filedialog as fd
+# from tkinter import Tk
+# import tkinter.filedialog as fd
 import pandas as pd
 from selenium.webdriver.common.by import By
 from .models import *
