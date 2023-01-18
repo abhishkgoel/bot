@@ -179,7 +179,7 @@ def upload_pdf(request):
         'form': form})
 
 def main(request):
-    print('testtttttttttttttttt')
+    # print('testtttttttttttttttt')
     # root = tk.Tk()
     # file2 = fd.askopenfilenames(parent=root, title='Choose a pdf files')
     # root.destroy()
