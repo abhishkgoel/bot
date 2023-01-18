@@ -29,6 +29,7 @@ from dateutil.relativedelta import relativedelta
 from .bots import *
 today = date.today()
 global driver
+import os
 
 
 def register(request):
@@ -137,12 +138,15 @@ def model_form_upload(request):
 
 def upload_pdf(request):
     global random_id
+    global pdf_file_os
     random_id = random.randint(0,9999)
     global login_select
     global select
     global excelfile
     global files_id
     files_id =[]
+    ospath = os.getcwd()
+    pdf_file_os = ospath+'/'
     if request.method == 'POST':
         form = DocumentForm2(request.POST,request.POST)
         otp = request.POST['otp']
@@ -188,11 +192,11 @@ def main(request):
     #     df1['file_name'][i]=file_name
     start = time.time()
     if(login_select.lower() =="producer"):
-        producer(driver,excelfile,select)
+        producer(driver,excelfile,select,pdf_file_os)
     elif(login_select.lower() =="brand owner"):
-        brand_owner(driver,excelfile)
+        brand_owner(driver,excelfile,pdf_file_os)
     elif(login_select.lower() =="importer"):
-        importer(driver,excelfile,select)
+        importer(driver,excelfile,select,pdf_file_os)
     else:
         print("PLEASE ENTER CORRECT CHOICE")
         pass

@@ -6,7 +6,7 @@ import pandas as pd
 from selenium.webdriver.common.by import By
 from .models import *
 
-def producer(driver,excelfile,select):
+def producer(driver,excelfile,select,pdf_file_os):
     errors=[]
     
     action = driver.find_element(by=By.XPATH, value='/html/body/app-root/app-epr/app-producer-list/div[1]/kl-simple-table-with-pagination/div[1]/div/div[1]/table/tbody/tr/td[8]/span/span/em').click()
@@ -133,12 +133,12 @@ def producer(driver,excelfile,select):
                     # pdf_file_index = df1[df1['file_name']==df['pdf_filename'][i]].index[0]
                     # pdf_file = df1['file_path'][pdf_file_index]
                     pdf_file = Document2.objects.get(file_name=df['pdf_filename'][i]).document_pdf
-                    f = open('D:\my_file.pdf', 'w+b')
+                    f = open('my_file.pdf', 'w+b')
                     # byte_arr = [120, 3, 255, 0, 100]
                     binary_format = bytearray(pdf_file)
                     f.write(binary_format)
                     f.close()
-                    upload_file.send_keys('D:/my_file.pdf')
+                    upload_file.send_keys(pdf_file_os+'my_file.pdf')
                     time.sleep(1)
                 except:
                     errors.append('Invoice upload error in-'+str(df['Invoice number'][i])+'-row-'+str(i+1))
@@ -376,12 +376,12 @@ def producer(driver,excelfile,select):
                     # pdf_file_index = df1[df1['file_name']==df['pdf_filename'][i]].index[0]
                     # pdf_file = df1['file_path'][pdf_file_index]
                     pdf_file = Document2.objects.get(file_name=df['pdf_filename'][i]).document_pdf
-                    f = open('D:\my_file.pdf', 'w+b')
+                    f = open('my_file.pdf', 'w+b')
                     # byte_arr = [120, 3, 255, 0, 100]
                     binary_format = bytearray(pdf_file)
                     f.write(binary_format)
                     f.close()
-                    upload_file.send_keys('D:/my_file.pdf')
+                    upload_file.send_keys(pdf_file_os+'my_file.pdf')
                     time.sleep(1)
 
                 except:
@@ -438,7 +438,7 @@ def producer(driver,excelfile,select):
 # Brand Owner Bot
 
 
-def brand_owner(driver,excelfile):
+def brand_owner(driver,excelfile,pdf_file_os):
     errors=[]
     # df1 = pd.DataFrame(list(file2), columns =['file_path'])
     # df1['file_name']=0
@@ -573,12 +573,12 @@ def brand_owner(driver,excelfile):
                 # pdf_file_index = df1[df1['file_name']==df['pdf_filename'][i]].index[0]
                 # pdf_file = df1['file_path'][pdf_file_index]
                 pdf_file = Document2.objects.get(file_name=df['pdf_filename'][i]).document_pdf
-                f = open('D:\my_file.pdf', 'w+b')
+                f = open('my_file.pdf', 'w+b')
                 # byte_arr = [120, 3, 255, 0, 100]
                 binary_format = bytearray(pdf_file)
                 f.write(binary_format)
                 f.close()
-                upload_file.send_keys('D:/my_file.pdf')
+                upload_file.send_keys(pdf_file_os+'my_file.pdf')
                 time.sleep(1)
 
             except:
@@ -691,7 +691,7 @@ def brand_owner(driver,excelfile):
 
 # Importer Bot
 
-def importer(driver,excelfile,select):
+def importer(driver,excelfile,select,pdf_file_os):
     errors=[]
     action = driver.find_element(by=By.XPATH, value='/html/body/app-root/app-epr/app-importer-list/div[1]/kl-simple-table-with-pagination/div[1]/div/div[1]/table/tbody/tr/td[8]/span/span/em').click()
     time.sleep(1)
@@ -841,12 +841,12 @@ def importer(driver,excelfile,select):
                         # pdf_file_index = df1[df1['file_name']==df['pdf_filename'][i]].index[0]
                         # pdf_file = df1['file_path'][pdf_file_index]
                         pdf_file = Document2.objects.get(file_name=df['pdf_filename'][i]).document_pdf
-                        f = open('D:\my_file.pdf', 'w+b')
+                        f = open('my_file.pdf', 'w+b')
                         # byte_arr = [120, 3, 255, 0, 100]
                         binary_format = bytearray(pdf_file)
                         f.write(binary_format)
                         f.close()
-                        upload_file.send_keys('D:/my_file.pdf')
+                        upload_file.send_keys(pdf_file_os+'my_file.pdf')
                         time.sleep(1)
                     except:
                         errors.append('Invoice upload error in-'+str(df['Invoice number'][i])+'-row-'+str(i+1))
@@ -1074,12 +1074,12 @@ def importer(driver,excelfile,select):
                         # pdf_file_index = df1[df1['file_name']==df['pdf_filename'][i]].index[0]
                         # pdf_file = df1['file_path'][pdf_file_index]
                         pdf_file = Document2.objects.get(file_name=df['pdf_filename'][i]).document_pdf
-                        f = open('D:\my_file.pdf', 'w+b')
+                        f = open('my_file.pdf', 'w+b')
                         # byte_arr = [120, 3, 255, 0, 100]
                         binary_format = bytearray(pdf_file)
                         f.write(binary_format)
                         f.close()
-                        upload_file.send_keys('D:/my_file.pdf')
+                        upload_file.send_keys(pdf_file_os+'my_file.pdf')
                         time.sleep(1)
 
                     except:
