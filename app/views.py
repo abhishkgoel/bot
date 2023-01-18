@@ -6,7 +6,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
 from .forms import *
-
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 # import tkinter as tk
 # import tkinter as Tk
 # import tkinter.filedialog as fd
@@ -98,7 +99,8 @@ def model_form_upload(request):
             file_instance.password = request.POST['password']
             file_instance.save()
             idd = file_instance.id
-            options = webdriver.ChromeOptions()
+            options = Options()
+            # options = webdriver.ChromeOptions()
             options.headless = True
             options.add_argument("--window-size=1920,1080")
             options.add_argument('--ignore-certificate-errors')
@@ -110,8 +112,8 @@ def model_form_upload(request):
             options.add_argument('--disable-gpu')
             options.add_argument('--disable-dev-shm-usage')
             options.add_argument('--no-sandbox')
-            # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-            driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+            driver = webdriver.Chrome(options=options)
+            # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
             driver.maximize_window()
             driver.get('https://eprplastic.cpcb.gov.in/#/plastic/home')
             time.sleep(1)
