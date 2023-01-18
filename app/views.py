@@ -178,7 +178,7 @@ def upload_pdf(request):
     return render(request,'app/upload_pdf.html', {
         'form': form})
 
-def main(request,driver,excelfile,select,pdf_file_os):
+def main(request):
     # print('testtttttttttttttttt')
     # root = tk.Tk()
     # file2 = fd.askopenfilenames(parent=root, title='Choose a pdf files')
