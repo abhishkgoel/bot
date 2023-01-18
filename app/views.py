@@ -178,7 +178,7 @@ def upload_pdf(request):
     return render(request,'app/upload_pdf.html', {
         'form': form})
 
-def main(request):
+def main(request,driver,excelfile,select,pdf_file_os):
     # print('testtttttttttttttttt')
     # root = tk.Tk()
     # file2 = fd.askopenfilenames(parent=root, title='Choose a pdf files')
@@ -190,6 +190,7 @@ def main(request):
     #     file2 = df1['file_path'][i].split("/")
     #     file_name = file2[-1].split(".")[0]
     #     df1['file_name'][i]=file_name
+    driver,excelfile,select,pdf_file_os
     start = time.time()
     if(login_select.lower() =="producer"):
         producer(driver,excelfile,select,pdf_file_os)
