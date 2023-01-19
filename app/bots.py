@@ -21,7 +21,7 @@ def producer(driver,excelfile,select,pdf_file_os):
     #     file2 = df1['file_path'][i].split("/")
     #     file_name = file2[-1].split(".")[0]
     #     df1['file_name'][i]=file_name
-    df = pd.read_excel(excelfile.read(),engine='openpyxl')
+    df = pd.read_excel(excelfile,engine='openpyxl')
     df = df.astype(str)
     count=0
     if(select=='sales'):
