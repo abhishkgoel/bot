@@ -210,7 +210,7 @@ def main(request):
 
     start = time.time()
     if(login_select.lower() =="producer"):
-        producer(driver,excelfile,select,pdf_file_os)
+        producer(driver=driver,excelfile=excelfile,select=select,pdf_file_os=pdf_file_os)
     elif(login_select.lower() =="brand owner"):
         brand_owner(driver,excelfile,pdf_file_os)
     elif(login_select.lower() =="importer"):
