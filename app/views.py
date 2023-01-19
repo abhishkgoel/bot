@@ -145,7 +145,6 @@ def upload_pdf(request,driver):
     global select
     global excelfile
     global files_id
-    # driver = driver
     files_id =[]
     ospath = os.getcwd()
     pdf_file_os = ospath+'/'
