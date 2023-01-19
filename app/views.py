@@ -28,7 +28,7 @@ import datetime
 from dateutil.relativedelta import relativedelta
 from .bots import *
 today = date.today()
-global driver
+# global driver
 import os
 
 
@@ -91,7 +91,7 @@ def home(request):
     
 
 def model_form_upload(request):
-    global driver
+    # global driver
     if request.method == 'POST':
         form = DocumentForm(request.POST,request.POST)
         if form.is_valid():
@@ -128,7 +128,7 @@ def model_form_upload(request):
             login = driver.find_element(by=By.XPATH, value='//*[@id="signIn"]')
             login.click()
             time.sleep(4)
-            return redirect('upload_pdf')
+            return redirect('upload_pdf', driver = driver)
 
     else:
         form = DocumentForm()
@@ -137,7 +137,7 @@ def model_form_upload(request):
     })
 
 def upload_pdf(request):
-    global driver
+    # global driver
     global random_id
     global pdf_file_os
     random_id = random.randint(0,9999)
@@ -145,7 +145,7 @@ def upload_pdf(request):
     global select
     global excelfile
     global files_id
-    driver = driver
+    # driver = driver
     files_id =[]
     ospath = os.getcwd()
     pdf_file_os = ospath+'/'
@@ -174,21 +174,21 @@ def upload_pdf(request):
             otp = driver.find_element(by=By.XPATH, value='//*[@id="loginUserID"]').send_keys(otp)
             driver.implicitly_wait(40)
             continu = driver.find_element(by=By.XPATH, value='/html/body/app-root/app-plastic/div/app-admin-login/div/div/div/div[2]/div[2]/div/div[2]/form/div[2]/button').click()
-            return redirect('main')
+            return redirect('main', driver = driver)
     else:
         form = DocumentForm2()
     return render(request,'app/upload_pdf.html', {
         'form': form})
 
 def main(request):
-    global driver
+    # global driver
     global random_id
     global pdf_file_os
     global login_select
     global select
     global excelfile
     global files_id
-    driver = driver
+    # driver = driver
     random_id = random_id
     pdf_file_os = pdf_file_os
     login_select = login_select
