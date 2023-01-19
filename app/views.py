@@ -28,23 +28,8 @@ import datetime
 from dateutil.relativedelta import relativedelta
 from .bots import *
 today = date.today()
-global driver
+# global driver
 import os
-
-options = Options()
-# options = webdriver.ChromeOptions()
-options.headless = True
-options.add_argument("--window-size=1920,1080")
-options.add_argument('--ignore-certificate-errors')
-options.add_argument('--allow-running-insecure-content')
-options.add_argument("--disable-extensions")
-options.add_argument("--proxy-server='direct://'")
-options.add_argument("--proxy-bypass-list=*")
-options.add_argument("--start-maximized")
-options.add_argument('--disable-gpu')
-options.add_argument('--disable-dev-shm-usage')
-options.add_argument('--no-sandbox')
-driver = webdriver.Chrome(options=options)
 
 
 def register(request):
@@ -115,20 +100,20 @@ def model_form_upload(request):
             file_instance.password = request.POST['password']
             file_instance.save()
             idd = file_instance.id
-            # options = Options()
-            # # options = webdriver.ChromeOptions()
-            # options.headless = True
-            # options.add_argument("--window-size=1920,1080")
-            # options.add_argument('--ignore-certificate-errors')
-            # options.add_argument('--allow-running-insecure-content')
-            # options.add_argument("--disable-extensions")
-            # options.add_argument("--proxy-server='direct://'")
-            # options.add_argument("--proxy-bypass-list=*")
-            # options.add_argument("--start-maximized")
-            # options.add_argument('--disable-gpu')
-            # options.add_argument('--disable-dev-shm-usage')
-            # options.add_argument('--no-sandbox')
-            # driver = webdriver.Chrome(options=options)
+            options = Options()
+            # options = webdriver.ChromeOptions()
+            options.headless = True
+            options.add_argument("--window-size=1920,1080")
+            options.add_argument('--ignore-certificate-errors')
+            options.add_argument('--allow-running-insecure-content')
+            options.add_argument("--disable-extensions")
+            options.add_argument("--proxy-server='direct://'")
+            options.add_argument("--proxy-bypass-list=*")
+            options.add_argument("--start-maximized")
+            options.add_argument('--disable-gpu')
+            options.add_argument('--disable-dev-shm-usage')
+            options.add_argument('--no-sandbox')
+            driver = webdriver.Chrome(options=options)
             # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
             driver.maximize_window()
             driver.get('https://eprplastic.cpcb.gov.in/#/plastic/home')
@@ -152,6 +137,7 @@ def model_form_upload(request):
     })
 
 def upload_pdf(request):
+    global driver
     global random_id
     global pdf_file_os
     random_id = random.randint(0,9999)
@@ -159,6 +145,7 @@ def upload_pdf(request):
     global select
     global excelfile
     global files_id
+    driver = driver
     files_id =[]
     ospath = os.getcwd()
     pdf_file_os = ospath+'/'
