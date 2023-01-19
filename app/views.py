@@ -181,6 +181,21 @@ def upload_pdf(request):
         'form': form})
 
 def main(request):
+    global driver
+    global random_id
+    global pdf_file_os
+    global login_select
+    global select
+    global excelfile
+    global files_id
+    driver = driver
+    random_id = random_id
+    pdf_file_os = pdf_file_os
+    login_select = login_select
+    select = select
+    excelfile = excelfile
+    files_id = files_id
+
     # print('testtttttttttttttttt')
     # root = tk.Tk()
     # file2 = fd.askopenfilenames(parent=root, title='Choose a pdf files')
@@ -192,7 +207,7 @@ def main(request):
     #     file2 = df1['file_path'][i].split("/")
     #     file_name = file2[-1].split(".")[0]
     #     df1['file_name'][i]=file_name
-    # driver,excelfile,select,pdf_file_os
+
     start = time.time()
     if(login_select.lower() =="producer"):
         producer(driver,excelfile,select,pdf_file_os)
