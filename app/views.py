@@ -28,7 +28,7 @@ import datetime
 from dateutil.relativedelta import relativedelta
 from .bots import *
 today = date.today()
-# global driver
+global driver
 import os
 
 
