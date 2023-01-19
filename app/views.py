@@ -136,7 +136,7 @@ def model_form_upload(request):
         'form': form
     })
 
-def upload_pdf(request):
+def upload_pdf(request,driver):
     # global driver
     global random_id
     global pdf_file_os
@@ -180,7 +180,7 @@ def upload_pdf(request):
     return render(request,'app/upload_pdf.html', {
         'form': form})
 
-def main(request):
+def main(request,driver):
     # global driver
     global random_id
     global pdf_file_os
