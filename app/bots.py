@@ -138,7 +138,7 @@ def producer(driver,excelfile,select,pdf_file_os):
                     binary_format = bytearray(pdf_file)
                     f.write(binary_format)
                     f.close()
-                    upload_file.send_keys(pdf_file_os+'my_file.pdf')
+                    upload_file.send_keys(pdf_file_os+'\my_file.pdf')
                     time.sleep(1)
                 except:
                     errors.append('Invoice upload error in-'+str(df['Invoice number'][i])+'-row-'+str(i+1))

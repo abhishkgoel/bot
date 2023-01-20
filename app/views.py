@@ -91,7 +91,7 @@ def home(request):
     
 
 def model_form_upload(request):
-    # global driver
+    global driver
     if request.method == 'POST':
         form = DocumentForm(request.POST,request.POST)
         if form.is_valid():
@@ -128,7 +128,7 @@ def model_form_upload(request):
             login = driver.find_element(by=By.XPATH, value='//*[@id="signIn"]')
             login.click()
             time.sleep(4)
-            return redirect('upload_pdf', driver = driver)
+            return redirect('upload_pdf')
 
     else:
         form = DocumentForm()
@@ -136,8 +136,8 @@ def model_form_upload(request):
         'form': form
     })
 
-def upload_pdf(request,driver):
-    # global driver
+def upload_pdf(request):
+    global driver
     global random_id
     global pdf_file_os
     random_id = random.randint(0,9999)
@@ -145,8 +145,10 @@ def upload_pdf(request,driver):
     global select
     global excelfile
     global files_id
+    driver = driver
     files_id =[]
     ospath = os.getcwd()
+    print(ospath)
     pdf_file_os = ospath+'/'
     if request.method == 'POST':
         form = DocumentForm2(request.POST,request.POST)
@@ -173,21 +175,21 @@ def upload_pdf(request,driver):
             otp = driver.find_element(by=By.XPATH, value='//*[@id="loginUserID"]').send_keys(otp)
             driver.implicitly_wait(40)
             continu = driver.find_element(by=By.XPATH, value='/html/body/app-root/app-plastic/div/app-admin-login/div/div/div/div[2]/div[2]/div/div[2]/form/div[2]/button').click()
-            return redirect('main', driver = driver)
+            return redirect('main')
     else:
         form = DocumentForm2()
     return render(request,'app/upload_pdf.html', {
         'form': form})
 
-def main(request,driver):
-    # global driver
+def main(request):
+    global driver
     global random_id
     global pdf_file_os
     global login_select
     global select
     global excelfile
     global files_id
-    # driver = driver
+    driver = driver
     random_id = random_id
     pdf_file_os = pdf_file_os
     login_select = login_select
